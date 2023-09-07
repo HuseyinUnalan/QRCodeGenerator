@@ -22,8 +22,15 @@
             <form action="{{route('store.qr')}}" method="POST">
                 @csrf
                 <input type="text" class="form-control" name="data">
+                @error('data')
+                <p for="formFile" class="form-label text-danger"> {{ $message }} </p>
+                @enderror
                 <button type="submit" class="btn btn-success mt-2">Submit</button>
             </form>
+            @if(isset($downloadLink))
+                <a href="{{ $downloadLink }}" class="btn btn-info text-white mt-2" download>Download QR code as SVG.</a>
+            @else
+            @endif
         </div>
     </div>
 </div>
